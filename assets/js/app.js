@@ -1,16 +1,17 @@
 const baseEndpoint = 'https://api.github.com';
 const usersEndpoint = `${baseEndpoint}/users`;
-const $n = document.querySelector('name');
-const $b = document.querySelector('#blog');
-const $l = document.querySelector('.location');
+const $n = document.querySelector('.name');//faltaba . de las clases
+const $b = document.querySelector('.blog');//faltaba # de las clases
+const $l = document.querySelector('.location');//Faltaba en index el elemento
 
 function displayUser(username) {
   $n.textContent = 'cargando...';
-  const response = await fetch(`${usersEndpoint}/${username}`);
-  console.log(data);
-  $n.textContent = '${data.name}';
-  $b.textContent = '${data.blog}';
-  $l.textContent = '${data.location}';
+  const response = fetch(`${baseEndpoint}/${usersEndpoint}/${username}`);
+    console.log(response);
+    data = response;
+  $n.textContent = `${data.name}`;//Uso de las backticks
+  $b.textContent = `${data.blog}`;
+  $l.textContent = `${data.location}`;
 }
 
 function handleError(err) {
